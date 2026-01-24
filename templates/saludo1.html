@@ -1,0 +1,15 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+{%import "_macros.html" as macros %}<!-- Importar macros-->
+
+<form method="post" action="">
+    {{ macros.datos('nombre', 'Escribe tu nombre')}}
+    {{ macros.datos('edad', 'Escribe tu edad')}}
+    {{ macros.datos('email', 'Escribe tu email')}}
+    {{ macros.datos('password', 'Escribe tu password')}}
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% macro datos(name,placeholder,type='text') %}
+<div class="mb-3">
+    <label for="num1" class="form-label">Numero 1:</label>
+    <input type="{{type}}" class="form-control" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}">
+</div>
+{%endmacro%}
+
+{% macro input_coordenada(name, label, value='') %}
+<div class="form-group">
+    <label for="{{name}}">{{ label }}:</label>
+    <input type="number" step="any" name="{{name}}" value="{{value}}" required>
+</div>
+{% endmacro %}
+

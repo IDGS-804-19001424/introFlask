@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        
+        <h1 class="mb-4">Calcular Distancia entre dos Puntos</h1>
+
+        <form method="POST" action="">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header bg-secondary text-white">
+                            Punto 1
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="x1" class="form-label">Coordenada X1</label>
+                                <input type="number" step="any" class="form-control" id="x1" name="x1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="y1" class="form-label">Coordenada Y1</label>
+                                <input type="number" step="any" class="form-control" id="y1" name="y1" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header bg-secondary text-white">
+                            Punto 2
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="x2" class="form-label">Coordenada X2</label>
+                                <input type="number" step="any" class="form-control" id="x2" name="x2" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="y2" class="form-label">Coordenada Y2</label>
+                                <input type="number" step="any" class="form-control" id="y2" name="y2" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">Calcular Distancia</button>
+            </div>
+
+        </form>
+
+        {% if resultado is not none %}
+            <div class="alert alert-success mt-4 text-center" role="alert">
+                <h3>La distancia es: <strong>{{ resultado }}</strong></h3>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

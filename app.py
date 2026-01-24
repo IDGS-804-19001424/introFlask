@@ -1,8 +1,14 @@
 import math
+import re
+
+from wtforms import form
 from flask import Flask, render_template, request
+import forms
+from flask_wtf.csrf import CSRFProtect  
 
 app = Flask(__name__)
-app.secret_key = 'clave secreta'
+app.secret_key = 'clave_secreta'
+csrf=CSRFProtect(0)
 
 
 @app.route('/')
@@ -111,5 +117,22 @@ def calcular_distancia():
 
     return render_template('distancia.html', resultado=resultado)
 
+
+
+@app.route("/alumnos", methods =["GET", "POST"])
+def alumnos():
+    mat=0
+    nom=''
+    ape=''
+    email=''
+    alumno_class = forms.UserForm(request.form)
+    if request.method=='POST' and alumno_class.validate():
+        mat = alumno_class.matricula.data
+        nom = alumno_class.nombre.data
+        ape = alumno_class.apellido.data
+        email = alumno_class.correo.data
+    return render_template("alumnos.html", form = alumno_class, mat=mat, nom=nom, ape=ape, email=email)
+
 if __name__ == '__main__':
+    csrf.init_app(app)
     app.run(debug=True)
